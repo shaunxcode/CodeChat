@@ -5,7 +5,7 @@
     die('MUST SPECIFY FILE');
   }
 
-  $filename  = dirname(__FILE__).'/data-' . $_GET['file'] . '.txt';
+  $filename  = 'data/' . $_GET['file'] . '.txt';
  
   // store new message in the file
   if (isset($_POST['msg'])) 
