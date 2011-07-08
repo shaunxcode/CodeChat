@@ -1,13 +1,10 @@
 <?php
-	session_start();
 
 	$file = isset($_GET['file']) ? $_GET['file'] : false;
 	if(!$file) {
 		header('location:index.php?file=' . uniqid());
 		die();
 	}
-
-	$user = isset($_SESSION['user']) ? $_SESSION['user'] : false;
 ?>
 <html>
 <head>
@@ -53,7 +50,7 @@
 		};
 		var CC = { 
 			file: <?php echo json_encode($file) ?>,
-			user: <?php echo json_encode($user) ?>,
+			user: false,
 			users: {},
 			messages: {},
 	    	timestamp: 0,
