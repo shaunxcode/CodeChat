@@ -115,7 +115,7 @@
 		$(function() {
 			if(!CC.user) { 
 				CC.user = prompt('username');
-				$.post('setUser.php', {user: CC.user});
+				//$.post('setUser.php', {user: CC.user});
 			}
 
 			CC.usersView = $('.userList');
