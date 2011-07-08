@@ -1,2 +1,1 @@
-shared_writable_dirs:
-    - data
+shared_writable_dirs: [/data]
