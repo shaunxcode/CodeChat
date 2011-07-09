@@ -4,7 +4,7 @@
 		header('location:index.php?file=' . uniqid());
 		die();
 	}
-	
+
 ?>
 <html>
 <head>
@@ -56,7 +56,6 @@
 	    	timestamp: 0,
 	    	initvars: {},
 		    url: './backend.php?file=<?php echo $file; ?>',
-		    noerror: true,
 	    
 		    connect: function() {
 		        $.get(
@@ -92,22 +91,11 @@
 		          		});
 
 		          		CC.timestamp = response.timestamp;
-		          		
-		    			//$('.messages').html(response.msg);
-		          		CC.noerror = true;
 		        	},
 		       		'JSON')
 		        .complete(function() {
 		          	// send a new ajax request when this request is finished
-		          if (!CC.noerror) {
-		            // if a connection problem occurs, try to reconnect each 5 seconds
-		            setTimeout(function(){ CC.connect() }, 5000); 
-		          }
-		          else {
-		            CC.connect();
-		          }
-
-		          CC.noerror = false;
+		            setTimeout(function(){ CC.connect() }, 1000); 
 		        });
 		    },
 	  	}
