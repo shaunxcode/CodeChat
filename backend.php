@@ -6,7 +6,11 @@
   }
 
   $filename  = dirname(__FILE__) . '/data/' . $_GET['file'] . '.txt';
- 
+
+  if(!file_exists($filename)) {
+    touch($filename);
+  }
+
   // store new message in the file
   if (isset($_POST['msg'])) 
   {
@@ -24,7 +28,7 @@
       FILE_APPEND);
     die();
   }
- 
+
   // infinite loop until the data file is not modified
   $lastmodif    = isset($_GET['timestamp']) ? $_GET['timestamp'] : 0;
   $currentmodif = filemtime($filename);
