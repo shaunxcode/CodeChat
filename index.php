@@ -1,9 +1,4 @@
 <?php
-
-echo dirname(__FILE__) . "\n";
-echo get_include_path();
-print_r(glob(dirname(__FILE__) . '/*'));
-die();
 	$file = isset($_GET['file']) ? $_GET['file'] : false;
 	if(!$file) {
 		header('location:index.php?file=' . uniqid());
