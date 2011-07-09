@@ -4,7 +4,7 @@
 		header('location:index.php?file=' . uniqid());
 		die();
 	}
-	print_r(glob('*'));
+	
 ?>
 <html>
 <head>
