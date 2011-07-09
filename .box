@@ -1,4 +1,3 @@
 shared_writable_dirs: [/data]
-document_root: /
-php_error_reporting: E_ALL
-php_display_errors: All
+url_rewrites:
+    - backend backend.php
