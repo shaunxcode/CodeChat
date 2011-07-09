@@ -1,6 +1,7 @@
 <?php
 
-echo dirname(__FILE__); 
+echo dirname(__FILE__) . "\n";
+echo get_include_path();
 die();
 	$file = isset($_GET['file']) ? $_GET['file'] : false;
 	if(!$file) {
