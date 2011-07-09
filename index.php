@@ -1,5 +1,7 @@
 <?php
 
+echo dirname(__FILE__); 
+die();
 	$file = isset($_GET['file']) ? $_GET['file'] : false;
 	if(!$file) {
 		header('location:index.php?file=' . uniqid());

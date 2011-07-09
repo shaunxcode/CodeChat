@@ -8,10 +8,10 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/shaunxcode/Dropbox/code/codechat/index.html",
+			"file": "/backup/citydeals_stage/app/Mage.php",
 			"settings":
 			{
-				"buffer_size": 1458,
+				"buffer_size": 21081,
 				"line_ending": "Unix"
 			}
 		}
@@ -30,11 +30,15 @@
 		"menu_visible": true,
 		"show_minimap": true,
 		"show_tabs": true,
-		"side_bar_visible": false,
+		"side_bar_visible": true,
 		"status_bar_visible": false
 	},
 	"file_history":
 	[
+		"/Users/shaunxcode/Dropbox/code/codechat/backend.php",
+		"/Users/shaunxcode/Dropbox/code/codechat/.box",
+		"/Users/shaunxcode/Dropbox/code/codechat/index.php",
+		"/Users/shaunxcode/Dropbox/code/codechat/setUser.php",
 		"/Users/shaunxcode/citydeals_stage/app/code/local/CityDeals/Cdapi/Helper/Simple.php",
 		"/Users/shaunxcode/Dropbox/code/sheet/index.html",
 		"/Users/shaunxcode/citydeals_stage/app/code/local/CityDeals/Cdapi/controllers/SimpleController.php"
@@ -53,6 +57,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"CCt",
+			"Come",
 			"grid"
 		],
 		"highlight": true,
@@ -61,6 +67,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"CC"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -83,26 +90,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/shaunxcode/Dropbox/code/codechat/index.html",
+					"file": "/backup/citydeals_stage/app/Mage.php",
 					"settings":
 					{
-						"buffer_size": 1458,
+						"buffer_size": 21081,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								387,
-								387
+								4250,
+								4250
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0,
-						"translation.y": 87,
+						"translation.y": 2047,
 						"zoom_level": 1
 					},
 					"type": "text"
