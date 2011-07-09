@@ -1,2 +1,2 @@
 shared_writable_dirs: [/data]
-default_gateway: gateway.php
+index_list: [index.php]  
