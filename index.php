@@ -20,7 +20,8 @@
 	<link rel="stylesheet" href="style/sunburst.css" type="text/css" media="all" />
 	<style>
 		ul { margin: 0; padding: 0;}
-		li { list-style-type: none; }
+		li { list-style-type: none; cursor: pointer;}
+		li.activeUser { font-weight: bold; } 
 		h3 { text-align: left; margin: 0; margin-bottom: 5px;}
 		.userList, .environment { background-color: #fff; padding-bottom: 5px; overflow: hidden; }		
 		.userList, .environment li { padding: 5px; padding-bottom: 0;} 
@@ -44,42 +45,67 @@
 		pre code { float: left; }
 
 		.messages {text-align: left; height: 300px; overflow: auto;}
-		.message { width: 100%; margin-top: .5em; height: 200px;}
+		.message { width: 100%; margin-top: .5em; height: 100px;}
 
 		.center-col { text-align: right; } 
 		.center-col button { margin-top: .5em; }
 	</style>
 	<script>
+		var asSource = function(r) {
+			return !isNaN(r) || typeof(r)=='string' ? r : r.toSource();
+		};
+
 		var out = function(r) { 
-			if(r) 
-			{
-				CC.messagesView.append($('<i />').text(!isNaN(r) || typeof(r)=='string' ? r : r.toSource()));
-				CC.messagesView.scrollTop(document.getElementById('transcript').scrollHeight);
+			if(r) {
+				CC.messagesView.append($('<i />').text(asSource(r)));
 			}
+
+			down();
 			return r;
 		};
+
+		var down = function() { 
+			CC.messagesView.scrollTop(document.getElementById('transcript').scrollHeight);
+		}
+
 		var CC = { 
 			file: <?php echo json_encode($file) ?>,
 			user: false,
+			activeUser: false,
 			users: {},
 			messages: {},
+			messageIndex: 0,
 	    	timestamp: 0,
 	    	initvars: {},
 		    url: './backend.php?file=<?php echo $file; ?>',
 	    
+	    	addUser: function(user) {
+				CC.users[user] = [];
+
+				var li = $('<li />').text(user).click(function(){
+					CC.activeUser = user;
+					CC.messageIndex = 0;
+					$('li').removeClass('activeUser');
+					$(this).addClass('activeUser');
+					$('.message').focus();
+				});
+
+				CC.usersView.append(li);
+
+				return li;
+	    	},
+
 		    connect: function() {
 		        $.get(
 			    	CC.url,
 		        	{timestamp: CC.timestamp},
 		        	function(response) {
-		          		// handle the server respons
-
 		          		$.each(response.messages, function(i, item){
 		          			if(!CC.messages[item.id]) {
 		          				if(!CC.users[item.user]) {
-		          					CC.users[item.user] = [];
-		          					CC.usersView.append($('<li />').text(item.user));
+		          					CC.addUser(item.user);
 		          				}
+
 		          				CC.users[item.user].push(item.msg);
 
 		          				CC.messages[item.id] = item.msg;
@@ -89,7 +115,8 @@
 			          					.append($('<strong />').text(item.user + ':'))
 			          					.append($('<code />').text(item.msg).addClass('javascript').attr('id', 'msg-' + item.id))
 			          					.append($('<div />').css('clear', 'both')));
-		          				
+		          				down();
+
 		          				hljs.highlightBlock(document.getElementById('msg-' + item.id), '    ');
 
 		          				try { 
@@ -100,7 +127,16 @@
 
 		          				for(var i in window) {
 		          					if(!CC.initvars[i]) {
-		          						CC.environmentView.append($('<li />').text(i)); 
+		          						CC.environmentView.append($('<li />').text(i).click(function(v){
+			          						return function() {
+		          								CC.messagesView.append(
+		          									$('<div />')
+		          										.append($('<strong />').text(v + ':'))
+		          										.append($('<code />').text(asSource(window[v])))
+		          										.append($('<div />').css('clear', 'both')));
+		          								down();
+		          							}
+		          						}(i))); 
 		          						CC.initvars[i] = true;
 		          					}
 		          				}
@@ -124,12 +160,31 @@
 			    $('.message').val('');
 			}, 
 
+			selectHistoryMessage: function(offset) {
+				var messageSize = CC.users[CC.activeUser].length;
+				if(messageSize) {
+					var potentialIndex = CC.messageIndex + offset;
+					if(potentialIndex >= 0 && potentialIndex <= messageSize) {
+						CC.messageIndex = potentialIndex;
+						$('.message').val(CC.users[CC.activeUser][CC.messageIndex]);
+					}	
+				}
+			},
+
 			historyPrev: function() {
-				
+				if(CC.messageIndex == 0) {
+					CC.messageIndex = CC.users[CC.activeUser].length;
+				}
+
+				CC.selectHistoryMessage(-1)
 			},
 
 			historyNext: function() {
-				
+				if(CC.messageIndex == CC.users[CC.activeUser].length - 1) {
+					CC.messageIndex = -1;
+				}
+
+				CC.selectHistoryMessage(+1);
 			},
 
 		    messageHandlers: {
@@ -140,13 +195,14 @@
 	  	}
 
 		$(function() {
-			if(!CC.user) { 
-				CC.user = prompt('username');
-			}
-
 			CC.usersView = $('.userList');
 			CC.messagesView = $('#transcript');
 			CC.environmentView = $('.environment');
+
+			if(!CC.user) { 
+				CC.user = prompt('username');
+				CC.addUser(CC.user).click();
+			}
 
 			$('.message').keypress(function(e) {
 				if(e.ctrlKey && CC.messageHandlers[e.keyCode]) {
