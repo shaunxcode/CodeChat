@@ -148,7 +148,7 @@
 		       		'JSON')
 		        .complete(function() {
 		          	// send a new ajax request when this request is finished
-		            setTimeout(function(){ CC.connect() }, 1000); 
+		            setTimeout(function(){ CC.connect() }, 500); 
 		        });
 		    },
 
