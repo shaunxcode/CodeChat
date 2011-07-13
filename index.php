@@ -42,7 +42,7 @@
 		pre { background-color: #000; color: #fff;}
 		pre i { padding: 0.5em; }
 		pre strong { float: left; display: block; padding: 0.5em; padding-right: 0;}
-		pre code { float: left; }
+		pre code { float: left; cursor: pointer;}
 
 		.messages {text-align: left; height: 300px; overflow: auto;}
 		.message { width: 100%; margin-top: .5em; height: 100px;}
@@ -113,7 +113,9 @@
 		          				CC.messagesView.append(
 			          				$('<div />')
 			          					.append($('<strong />').text(item.user + ':'))
-			          					.append($('<code />').text(item.msg).addClass('javascript').attr('id', 'msg-' + item.id))
+			          					.append($('<code />').text(item.msg).addClass('javascript').attr('id', 'msg-' + item.id).click(function(){
+			          						$('.message').val(item.msg)	
+			          					}))
 			          					.append($('<div />').css('clear', 'both')));
 		          				down();
 

@@ -11,23 +11,7 @@
 			"file": "/Users/shaunxcode/Dropbox/code/codechat/index.php",
 			"settings":
 			{
-				"buffer_size": 4209,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/shaunxcode/Dropbox/code/codechat/backend.php",
-			"settings":
-			{
-				"buffer_size": 1138,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/shaunxcode/Dropbox/code/codechat/.box",
-			"settings":
-			{
-				"buffer_size": 55,
+				"buffer_size": 6876,
 				"line_ending": "Unix"
 			}
 		}
@@ -51,13 +35,13 @@
 	},
 	"file_history":
 	[
+		"/Users/shaunxcode/Dropbox/code/codechat/index.php",
+		"/Users/shaunxcode/Dropbox/code/codechat/backend.php",
+		"/Users/shaunxcode/Dropbox/code/codechat/.box",
 		"/Users/shaunxcode/Dropbox/code/codechat/test.php",
 		"/Users/shaunxcode/Dropbox/code/codechat/repl.php",
 		"/Users/shaunxcode/Dropbox/code/codechat/gateway.php",
 		"/backup/citydeals_stage/app/Mage.php",
-		"/Users/shaunxcode/Dropbox/code/codechat/backend.php",
-		"/Users/shaunxcode/Dropbox/code/codechat/.box",
-		"/Users/shaunxcode/Dropbox/code/codechat/index.php",
 		"/Users/shaunxcode/Dropbox/code/codechat/setUser.php",
 		"/Users/shaunxcode/citydeals_stage/app/code/local/CityDeals/Cdapi/Helper/Simple.php",
 		"/Users/shaunxcode/Dropbox/code/sheet/index.html",
@@ -77,6 +61,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"messagesPre",
+			"pre",
 			"noerrors",
 			"CCt",
 			"Come",
@@ -106,7 +92,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -114,75 +100,21 @@
 					"file": "/Users/shaunxcode/Dropbox/code/codechat/index.php",
 					"settings":
 					{
-						"buffer_size": 4209,
+						"buffer_size": 6876,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3623,
-								3623
+								428,
+								428
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0,
-						"translation.y": 1465,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/shaunxcode/Dropbox/code/codechat/backend.php",
-					"settings":
-					{
-						"buffer_size": 1138,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								351,
-								351
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0,
-						"translation.y": 3,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/Users/shaunxcode/Dropbox/code/codechat/.box",
-					"settings":
-					{
-						"buffer_size": 55,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								55,
-								55
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0,
 						"translation.y": 0,
